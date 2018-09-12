@@ -12,15 +12,18 @@ head(ritvars_zerodosage)
 #plot relationship between interval variabl and improve variable
 ggplot(ritvars_zerodosage) + geom_point(aes(x=INTERVAL, y=IMPROVE))
 
-#first question model
+#1.	If C.A.D. can be improved overtime without treatment, there is no real need for Ritalin dosage.  Given	 that the time intervals between the first and second test vary across participants (“INTERVAL”), it is suspected that the baseline improvements are also different.  Propose an estimation model and use your estimation result to address this issue.
+
 model = lm(IMPROVE~INTERVAL+TEST1+TEST1*INTERVAL, data=ritvars_zerodosage)
 summary(model)
 
-#second question model
+#2.	Instead of affecting the baseline improvements, researchers want to investigate the probability that the effect of Ritalin dosage is larger the longer the duration of treatment (represented by “INTERVAL”).  Propose another estimation model and use your estimation result to address this issue.
+
 model2 = lm(IMPROVE~INTERVAL+DOSAGE+INTERVAL*DOSAGE, data=Ritvars)
 summary(model2)
 
-#third question model
+#3.	Researchers suspect that the effectiveness of Ritalin in treating C.A.D. may vary across male and female patients.  Propose an estimation model and use your estimation result to address this issue.
+
 ritvars_withdosage = filter(Ritvars, DOSAGE != 0)
 head(ritvars_withdosage)
 model3 = lm(IMPROVE~DOSAGE+FEMALE, data=ritvars_withdosage)
