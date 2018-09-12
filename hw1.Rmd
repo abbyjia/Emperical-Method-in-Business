@@ -1,0 +1,30 @@
+library(dplyr)
+library(ggplot2)
+library(lubridate)
+
+head(Ritvars)
+print(Ritvars$DOSAGE)
+
+#extract data with dosage equal to 0
+ritvars_zerodosage = filter(Ritvars, DOSAGE==0)
+head(ritvars_zerodosage)
+
+#plot relationship between interval variabl and improve variable
+ggplot(ritvars_zerodosage) + geom_point(aes(x=INTERVAL, y=IMPROVE))
+
+#first question model
+model = lm(IMPROVE~INTERVAL+TEST1+TEST1*INTERVAL, data=ritvars_zerodosage)
+summary(model)
+
+#second question model
+model2 = lm(IMPROVE~INTERVAL+DOSAGE+INTERVAL*DOSAGE, data=Ritvars)
+summary(model2)
+
+#third question model
+ritvars_withdosage = filter(Ritvars, DOSAGE != 0)
+head(ritvars_withdosage)
+model3 = lm(IMPROVE~DOSAGE+FEMALE, data=ritvars_withdosage)
+summary(model3)
+
+
+
