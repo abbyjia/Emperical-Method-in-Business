@@ -19,67 +19,6 @@ summary(model)
 
 #Response to #1: I propose to use linear regression model on ritvars data that only has zero dosage, setting interval and test1 values as independent variables and improvement values as dependent variable. The positive coefficient of interval variable shows that C.A.D indeed improve overtime without any dosage of Ritvars. And the negative coefficient of interaction term indicates that the starting condition of a patient truly have a slight influence on the effect of time on the improvement magnitude of a patient. However, the p-value for both coefficients are relatively large. Thus, the inference drew above does not have high significance level. 
 
-
-
-
-
-
-
-
-
-
-
-
-<!--
- /* Font Definitions */
-@font-face
-	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;
-	mso-font-charset:0;
-	mso-generic-font-family:auto;
-	mso-font-pitch:variable;
-	mso-font-signature:-536870145 1107305727 0 0 415 0;}
-@font-face
-	{font-family:SimSun;
-	panose-1:2 1 6 0 3 1 1 1 1 1;
-	mso-font-charset:134;
-	mso-generic-font-family:auto;
-	mso-font-pitch:variable;
-	mso-font-signature:3 135135232 16 0 262145 0;}
- /* Style Definitions */
-p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{mso-style-unhide:no;
-	mso-style-qformat:yes;
-	mso-style-parent:"";
-	margin:0in;
-	margin-bottom:.0001pt;
-	mso-pagination:widow-orphan;
-	font-size:12.0pt;
-	font-family:"Times New Roman";
-	mso-fareast-font-family:SimSun;}
-.MsoChpDefault
-	{mso-style-type:export-only;
-	mso-default-props:yes;
-	font-size:10.0pt;
-	mso-ansi-font-size:10.0pt;
-	mso-bidi-font-size:10.0pt;
-	mso-fareast-font-family:SimSun;}
-@page WordSection1
-	{size:8.5in 11.0in;
-	margin:1.0in 1.0in 1.0in 1.0in;
-	mso-header-margin:.5in;
-	mso-footer-margin:.5in;
-	mso-paper-source:0;}
-div.WordSection1
-	{page:WordSection1;}
--->
-
-
-
-
-
-
-
 #2.	Instead of affecting the baseline improvements, researchers want to investigate the probability that the effect of Ritalin dosage is larger the longer the duration of treatment (represented by “INTERVAL”).  Propose another estimation model and use your estimation result to address this issue.
 
 model2 = lm(IMPROVE~INTERVAL+DOSAGE+INTERVAL*DOSAGE, data=Ritvars)
